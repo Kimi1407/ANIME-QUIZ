@@ -2,6 +2,8 @@
 
 A professional, interactive quiz application showcasing anime characters and series. Test your anime knowledge with an engaging, responsive user interface.
 
+Live Demo(Github Pages): https://kimi1407.github.io/ANIME-QUIZ/
+
 ## Features
 
 - **Two Quiz Modes**: Character identification and anime series recognition
