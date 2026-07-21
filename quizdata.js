@@ -49,7 +49,7 @@ const quizzes = {
       },
       {
         id: 5,
-        image: "IMAGES/𝐈𝗌𝗁𝗂𝖕𝖆 𝐑𝗒u𝗄𝖾𝗇.jpg",
+        image: "IMAGES/Ishida Ryuken.jpg",
         question: "Who is this character?",
         answers: [
           { text: "Sebastian Michelis", correct: false },
