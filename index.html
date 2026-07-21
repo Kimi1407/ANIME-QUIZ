@@ -1,125 +1,146 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Interactive anime quiz application - test your anime knowledge" />
+    <meta
+      name="description"
+      content="Interactive anime quiz application - test your anime knowledge"
+    />
     <title>Anime Quiz - Test Your Knowledge</title>
     <link rel="icon" type="image/png" href="IMAGES/logo.png" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,600,700" />
-    <script src="https://kit.fontawesome.com/920bc8ae8f.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <!-- Landing Screen -->
+    <link rel="stylesheet" href="quiz.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lora:400,600,700"
+    />
+    <script
+      src="https://kit.fontawesome.com/920bc8ae8f.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
     <section id="landing-screen" class="screen active">
-        <div class="landing-container">
-            <div class="landing-content">
-                <h1 class="landing-title">Welcome to the Anime Quiz</h1>
-                <img src="IMAGES/kurosensei.jpg" alt="Anime character welcoming users" class="landing-image" />
-                
-                <div class="form-container">
-                    <h2>Enter Your Name to Begin</h2>
-                    <form id="name-form" onsubmit="handleNameSubmit(event)">
-                        <label for="name-input">Name:</label>
-                        <input 
-                            id="name-input" 
-                            type="text" 
-                            placeholder="Enter your name" 
-                            required 
-                            autocomplete="off"
-                            maxlength="50"
-                        />
-                        <button type="submit" class="btn btn-primary">START</button>
-                    </form>
-                </div>
-            </div>
+      <div class="landing-container">
+        <div class="landing-content">
+          <h1 class="landing-title">Welcome to the Anime Quiz</h1>
+          <img
+            src="IMAGES/kurosensei.jpg"
+            alt="Anime character welcoming users"
+            class="landing-image"
+          />
+
+          <div class="form-container">
+            <h2>Enter Your Name to Begin</h2>
+            <form id="name-form" onsubmit="handleNameSubmit(event)">
+              <label for="name-input">Name:</label>
+              <input
+                id="name-input"
+                type="text"
+                placeholder="Enter your name"
+                required
+                autocomplete="off"
+                maxlength="50"
+              />
+              <button type="submit" class="btn btn-primary">START</button>
+            </form>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Quiz Selection Screen -->
     <section id="quiz-selection-screen" class="screen">
-        <button class="back-btn" onclick="goBack()">
-            <i class="fas fa-arrow-left"></i>
-        </button>
-        
-        <h2 class="section-title">Select a Quiz</h2>
-        
-        <div class="quiz-selection">
-            <div class="quiz-card" onclick="startQuiz('character')">
-                <img src="IMAGES/kurosensei.jpg" alt="Character Quiz" />
-                <h3>Anime Character Quiz</h3>
-                <p>Identify characters from their images</p>
-            </div>
+      <button class="back-btn" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
 
-            <div class="quiz-card" onclick="startQuiz('anime')">
-                <img src="IMAGES/kurosensei.jpg" alt="Anime Quiz" />
-                <h3>Anime Series Quiz</h3>
-                <p>Guess anime titles from scenes</p>
-            </div>
+      <h2 class="section-title">Select a Quiz</h2>
+
+      <div class="quiz-selection">
+        <div class="quiz-card" onclick="startQuiz('character')">
+          <img src="IMAGES/kurosensei.jpg" alt="Character Quiz" />
+          <h3>Anime Character Quiz</h3>
+          <p>Identify characters from their images</p>
         </div>
+
+        <div class="quiz-card" onclick="startQuiz('anime')">
+          <img src="IMAGES/kurosensei.jpg" alt="Anime Quiz" />
+          <h3>Anime Series Quiz</h3>
+          <p>Guess anime titles from scenes</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Quiz Screen -->
     <section id="quiz-screen" class="screen">
-        <button class="back-btn" onclick="goBack()">
-            <i class="fas fa-arrow-left"></i>
-        </button>
+      <button class="back-btn" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
 
-        <div class="quiz-container">
-            <div class="quiz-header">
-                <span class="question-counter">Question <span id="current-question">1</span> of 5</span>
-                <span class="score-display">Score: <span id="current-score">0</span>/5</span>
-            </div>
-
-            <div class="question-box">
-                <h2 id="question-title">Question Title</h2>
-                <img id="question-image" src="" alt="Question image" class="question-image" />
-                
-                <div id="answers-container" class="answers-grid">
-                    <!-- Answers will be dynamically inserted here -->
-                </div>
-            </div>
-
-            <div class="quiz-footer">
-                <p class="player-name">Player: <span id="player-name"></span></p>
-            </div>
+      <div class="quiz-container">
+        <div class="quiz-header">
+          <span class="question-counter"
+            >Question <span id="current-question">1</span> of 5</span
+          >
+          <span class="score-display"
+            >Score: <span id="current-score">0</span>/5</span
+          >
         </div>
+
+        <div class="question-box">
+          <h2 id="question-title">Question Title</h2>
+          <img
+            id="question-image"
+            src=""
+            alt="Question image"
+            class="question-image"
+          />
+
+          <div id="answers-container" class="answers-grid"></div>
+        </div>
+
+        <div class="quiz-footer">
+          <p class="player-name">Player: <span id="player-name"></span></p>
+        </div>
+      </div>
     </section>
 
-    <!-- Results Screen -->
     <section id="results-screen" class="screen">
-        <div class="results-container">
-            <img src="IMAGES/result.png" alt="Results" class="results-image" />
-            <h2 class="results-title">Quiz Completed!</h2>
-            
-            <div class="results-content">
-                <p class="results-player">Great job, <span id="result-player-name"></span>!</p>
-                <p class="results-message" id="results-message"></p>
-                <p class="results-percentage" id="results-percentage"></p>
-                <div class="results-breakdown">
-                    <div class="stat-box correct">
-                        <span class="stat-label">Correct</span>
-                        <span class="stat-value" id="result-correct">0</span>
-                    </div>
-                    <div class="stat-box incorrect">
-                        <span class="stat-label">Incorrect</span>
-                        <span class="stat-value" id="result-incorrect">0</span>
-                    </div>
-                </div>
-            </div>
+      <div class="results-container">
+        <img src="IMAGES/result.png" alt="Results" class="results-image" />
+        <h2 class="results-title">Quiz Completed!</h2>
 
-            <div class="results-actions">
-                <button class="btn btn-primary" onclick="retakeQuiz()">Retake Quiz</button>
-                <button class="btn btn-secondary" onclick="changeQuiz()">Choose Different Quiz</button>
-                <button class="btn btn-secondary" onclick="goHome()">Home</button>
+        <div class="results-content">
+          <p class="results-player">
+            Great job, <span id="result-player-name"></span>!
+          </p>
+          <p class="results-message" id="results-message"></p>
+          <p class="results-percentage" id="results-percentage"></p>
+          <div class="results-breakdown">
+            <div class="stat-box correct">
+              <span class="stat-label">Correct</span>
+              <span class="stat-value" id="result-correct">0</span>
             </div>
+            <div class="stat-box incorrect">
+              <span class="stat-label">Incorrect</span>
+              <span class="stat-value" id="result-incorrect">0</span>
+            </div>
+          </div>
         </div>
+
+        <div class="results-actions">
+          <button class="btn btn-primary" onclick="retakeQuiz()">
+            Retake Quiz
+          </button>
+          <button class="btn btn-secondary" onclick="changeQuiz()">
+            Choose Different Quiz
+          </button>
+          <button class="btn btn-secondary" onclick="goHome()">Home</button>
+        </div>
+      </div>
     </section>
 
-    <!-- Scripts -->
-    <script src="js/quizData.js"></script>
-    <script src="js/quizLogic.js"></script>
-    <script src="js/uiManager.js"></script>
-</body>
+    <script src="quizdata.js"></script>
+    <script src="quizlogic.js"></script>
+    <script src="uiManager.js"></script>
+  </body>
 </html>
